@@ -159,10 +159,10 @@ class Config:
        except:
           LOGGER.error("Invalid FPS specified")
           E_FPS=False
-       if not FPS >= 30:
-          FPS=30
+       if not FPS >= 50:
+          FPS=50
     else:
-       FPS=30
+       FPS=50
     try:
        CUSTOM_QUALITY=int(CUSTOM_QUALITY)
        if CUSTOM_QUALITY > 100:
@@ -195,213 +195,213 @@ class Config:
 
     #help strings 
     PLAY_HELP="""
-__You can play using any of these options__
+__Puteți reda folosind oricare dintre aceste opțiuni__
 
-1. Play a video from a YouTube link.
-Command: **/play**
-__You can use this as a reply to a YouTube link or pass link along command. or as a reply to message to search that in YouTube.__
+1. Redați un videoclip de la un link YouTube.
+Comanda: **/play**
+__Puteți folosi acest lucru ca răspuns la un link YouTube sau transmiteți link-ul împreună cu o comandă. sau ca răspuns la mesaj pentru a căuta pe YouTube.__
 
-2. Play from a telegram file.
-Command: **/play**
-__Reply to a supported media(video and documents or audio file ).__
-Note: __For both the cases /fplay also can be used by admins to play the song immediately without waiting for queue to end.__
+2. Redați dintr-un fișier telegram.
+Comanda: **/play**
+__Răspundeți la un suport media acceptat (video și documente sau fișier audio).__
+Notă: __Pentru ambele cazuri, /fplay poate fi folosit și de administratori pentru a reda melodia imediat, fără a aștepta să se termine coada.__
 
-3. Play from a YouTube playlist
-Command: **/yplay**
-__First get a playlist file from @GetPlaylistBot or @DumpPlaylist and reply to playlist file.__
+3. Redați dintr-o listă de redare YouTube
+Comanda: **/yplay**
+__Mai întâi obțineți un fișier de playlist de la @GetPlaylistBot sau @DumpPlaylist și răspundeți la fișierul de playlist.__
 
 4. Live Stream
-Command: **/stream**
-__Pass a live stream URL or any direct URL to play it as stream.__
+Comanda: **/stream**
+__Trimiteți o adresă URL a streamului live sau orice adresă URL directă pentru a-l reda ca stream.__
 
-5. Import an old playlist.
-Command: **/import**
-__Reply to a previously exported playlist file. __
+5. Importați o listă de redare veche.
+Comanda: **/import**
+__Răspundeți la un fișier de listă de redare exportat anterior. __
 
-6. Channel Play
-Command: **/cplay**
-__Use `/cplay channel username or channel id` to play all the files from the given channel.
-By default both video files and documents will be played . You can add or remove the file type using `FILTERS` var. 
-For example , to stream audio, video and document from the channel use `/env FILTERS video document audio` . If you need only audio , you can use `/env FILTERS video audio` and so on.
-To set up the files from a channel as STARTUP_STREAM, so that the files will be automatically added to playlist on startup of bot. use `/env STARTUP_STREAM channel username or channel id`
+6. Redare canal
+Comanda: **/cplay**
+__Utilizați `/cplay nume de utilizator al canalului sau id-ul canalului` pentru a reda toate fișierele de pe canalul dat.
+În mod implicit, vor fi redate atât fișierele video, cât și documentele. Puteți adăuga sau elimina tipul de fișier folosind `FILTER` var.
+De exemplu, pentru a transmite în stream audio, video și documente de pe canal, utilizați `/env FILTERS video document audio` . Dacă aveți nevoie doar de audio, puteți utiliza `/env FILTERS video audio` și așa mai departe.
+Pentru a configura fișierele de pe un canal ca STARTUP_STREAM, astfel încât fișierele să fie adăugate automat la lista de redare la pornirea botului. utilizați `/env STARTUP_STREAM nume de utilizator al canalului sau id-ul canalului`
 
-Note that for public channels you should use username of channels along with '@' and for private channels you should use channel id.
-For private channels , make sure both the bot and USER account is a member of channel.__
+Rețineți că pentru canalele publice ar trebui să utilizați numele de utilizator al canalelor împreună cu „@”, iar pentru canalele private ar trebui să utilizați ID-ul canalului.
+Pentru canalele private, asigurați-vă că atât botul, cât și contul USER sunt membri ai canalului.__
 """
     SETTINGS_HELP="""
-**You can easily customize you player as per you needs. The following configurations are available:**
+** Vă puteți personaliza cu ușurință playerul în funcție de nevoi. Sunt disponibile următoarele configurații:**
 
-🔹Command: **/settings**
+🔹Comandă: **/settings**
 
-🔹AVAILABLE CONFIGURATIONS:
+🔹CONFIGURAȚII DISPONIBILE:
 
-**Player Mode** -  __This allows you to run your player as 24/7 music player or only when there is song in queue. 
-If disabled, player will leave from the call when the playlist is empty.
-Otherwise STARTUP_STREAM will be streamed when playlist id empty.__
+**Modul Player** - __Acest lucru vă permite să rulați playerul ca player muzical 24/7 sau numai atunci când există o melodie în coadă.
+Dacă este dezactivat, playerul va părăsi apelul când lista de redare este goală.
+În caz contrar, STARTUP_STREAM va fi transmis în stream când id-ul listei de redare este gol.__
 
-**Video Enabled** -  __This allows you to switch between audio and video.
-if disabled, video files will be played as audio.__
+**Video Enabled** - __Acest lucru vă permite să comutați între audio și video.
+dacă este dezactivat, fișierele video vor fi redate ca audio.__
 
-**Admin Only** - __Enabling this will restrict non-admin users from using play command.__
+**Numai administrator** - __Activarea acestei opțiuni va restricționa utilizatorii care nu sunt administratori să folosească comanda de redare.__
 
-**Edit Title** - __Enabling this will edit your VideoChat title to current playing songs name.__
+**Editează titlul** - __Activând această opțiune, se va edita titlul VideoChat-ului la numele melodiilor în curs de redare.__
 
-**Shuffle Mode** - __Enabling this will shuffle the playlist whenever you import a playlist or using /yplay __
+**Mod aleatoriu** - __Activarea acestui lucru va amesteca lista de redare ori de câte ori importați o listă de redare sau utilizați /yplay __
 
-**Auto Reply** - __Choose whether to reply the PM messages of playing user account.
-You can  set up a custom reply message using `REPLY_MESSAGE` confug.__
+**Răspuns automat** - __Alegeți dacă doriți să răspundeți la mesajele PM ale contului de utilizator în redare.
+Puteți configura un mesaj de răspuns personalizat folosind `REPLY_MESSAGE` confug.__
 
 """
     SCHEDULER_HELP="""
-__VCPlayer allows you to schedule a stream. 
-This means you can schedule a stream for a future date and on the scheduled date, stream will be played automatically.
-At present you can schedule a stream for even one year!!. Make sure you have set up a databse, else you will loose your schedules whenever the player restarts. __
+__VCPlayer vă permite să programați un stream.
+Aceasta înseamnă că puteți programa un stream pentru o dată viitoare, iar la data programată, streamul va fi redat automat.
+În prezent puteți programa un stream chiar și pentru un an!!. Asigurați-vă că ați configurat o bază de date, altfel vă veți pierde programele de fiecare dată când playerul repornește. __
 
-Command: **/schedule**
+Comanda: **/schedule**
 
-__Reply to a file or a youtube video or even a text message with schedule command.
-The replied media or youtube video will be scheduled and will be played on the scheduled date.
-The scheduling time is by default in IST and you can change the timezone using `TIME_ZONE` config.__
+__Răspundeți la un fișier sau un videoclip de pe youtube sau chiar la un mesaj text cu comanda de programare.
+Media cu răspuns sau videoclipul de pe youtube va fi programat și va fi redat la data programată.
+Ora de programare este implicit în IST și puteți schimba fusul orar folosind configurația `TIME_ZONE`.__
 
-Command: **/slist**
-__View your current scheduled streams.__
+Comanda: **/slist**
+__Vizualizați streamurile dvs. programate curente.__
 
-Command: **/cancel**
-__Cancel a schedule by its schedule id, You can get the schedule id using /slist command__
+Comanda: **/anulează**
+__Anulați un program după id-ul său de program, puteți obține ID-ul programului folosind comanda /slist__
 
-Command: **/cancelall**
-__Cancel all the scheduled streams__
+Comanda: **/cancelall**
+__Anulează toate streamurile programate__
 """
     RECORDER_HELP="""
-__With VCPlayer you can easily record all your video chats.
-By default telegram allows you to record for a maximum duration of 4 hours. 
-An attempt to overcome this limit has been made by automatically restarting the recording after  4 hours__
+__Cu VCPlayer vă puteți înregistra cu ușurință toate conversațiile video.
+În mod implicit, telegram vă permite să înregistrați pentru o durată maximă de 4 ore.
+O încercare de a depăși această limită a fost făcută prin repornirea automată a înregistrării după 4 ore__
 
-Command: **/record**
+Comanda: **/record**
 
-AVAILABLE CONFIGURATIONS:
-1. Record Video: __If enabled both the video and audio of the stream will be recorded, otherwise only audio will be recorded.__
+CONFIGURAȚII DISPONIBILE:
+1. Înregistrare video: __Dacă este activat, atât videoclipul, cât și sunetul streamului vor fi înregistrate, altfel doar audio va fi înregistrat.__
 
-2. Video dimension: __Choose between portrait and landscape dimensions for your recording__
+2. Dimensiunea video: __Alegeți între dimensiunile portret și peisaj pentru înregistrarea dvs.__
 
-3. Custom Recording Title: __Set up a custom recording title for your recordings. Use a command /rtitle to configure this.
-To turn off the custom title, use `/rtitle False `__
+3. Titlu de înregistrare personalizat: __Configurați un titlu de înregistrare personalizat pentru înregistrările dvs. Utilizați o comandă /rtitle pentru a configura acest lucru.
+Pentru a dezactiva titlul personalizat, utilizați `/rtitle False `__
 
-4. Recording Dumb: __You can set up forwarding all your recordings to a channel, this will be useful since otherwise recordings are sent to saved messages of streaming account.
-Setup using `RECORDING_DUMP` config.__
+4. Înregistrare stupidă: __Puteți configura redirecționarea tuturor înregistrărilor dvs. către un canal, acest lucru va fi util deoarece, altfel, înregistrările sunt trimise către mesajele salvate din contul de streaming.
+Configurați folosind configurația `RECORDING_DUMP`.__
 
-⚠️ If you start a recording with vcplayer, make sure you stop the same with vcplayer.
+⚠️ Dacă începeți o înregistrare cu vcplayer, asigurați-vă că opriți același lucru cu vcplayer.
 
 """
 
     CONTROL_HELP="""
-__VCPlayer allows you to control your streams easily__
-1. Skip a song.
-Command: **/skip**
-__You can pass a number greater than 2 to skip the song in that position.__
+__VCPlayer vă permite să vă controlați streamurile cu ușurință__
+1. Sari peste o melodie.
+Comanda: **/skip**
+__Puteți trece un număr mai mare de 2 pentru a sări peste melodia în acea poziție.__
 
-2. Pause the player.
-Command: **/pause**
+2. Întrerupeți playerul.
+Comanda: **/pauză**
 
-3. Resume the player.
-Command: **/resume**
+3. Reluați playerul.
+Comanda: **/reluare**
 
-4. Change Volume.
-Command: **/volume**
-__Pass the volume in between 1-200.__
+4. Schimbați volumul.
+Comanda: **/volum**
+__Treceți volumul între 1-200.__
 
-5. Leave the VC.
-Command: **/leave**
+5. Părăsiți VC.
+Comanda: **/pleaca**
 
-6. Shuffle the playlist.
-Command: **/shuffle**
+6. Amestecați lista de redare.
+Comanda: **/shuffle**
 
-7. Clear the current playlist queue.
-Command: **/clearplaylist**
+7. Ștergeți lista curentă de redare.
+Comanda: **/clearplaylist**
 
-8. Seek the video.
-Command: **/seek**
-__You can pass number of seconds to be skipped. Example: /seek 10 to skip 10 sec. /seek -10 to rewind 10 sec.__
+8. Căutați videoclipul.
+Comanda: **/seek**
+__Puteți trece un număr de secunde pentru a fi sărit. Exemplu: /seek 10 pentru a sări peste 10 sec. /seek -10 pentru a derula înapoi 10 sec.__
 
-9. Mute the player.
-Command: **/vcmute**
+9. Dezactivați sunetul playerului.
+Comanda: **/vcmute**
 
-10. Unmute the player.
-Command : **/vcunmute**
+10. Activați sunetul playerului.
+Comanda: **/vcunmute**
 
-11. Shows the playlist.
-Command: **/playlist** 
-__Use /player to show with control buttons__
+11. Afișează lista de redare.
+Comanda: **/playlist**
+__Folosiți /player pentru a afișa cu butoanele de control__
 """
 
     ADMIN_HELP="""
-__VCPlayer allows to control admins, that is you can add admins and remove them easily.
-It is recommended to use a MongoDb database for better experience, else all you admins will get reset after restart.__
+__VCPlayer vă permite să controlați administratorii, adică puteți adăuga administratori și îi puteți elimina cu ușurință.
+Este recomandat să utilizați o bază de date MongoDb pentru o experiență mai bună, altfel toți administratorii dvs. vor fi resetati după repornire.__
 
-Command: **/vcpromote**
-__You can promote a admin with their username or user id or by replying to that users message.__
+Comanda: **/vcpromote**
+__Puteți promova un administrator cu numele de utilizator sau id-ul de utilizator sau răspunzând la mesajul respectiv.__
 
-Command: **/vcdemote**
-__Remove an admin from admin list__
+Comanda: **/vcdemote**
+__Eliminați un administrator din lista de administratori__
 
-Command: **/refresh**
-__Refresh the admin list of chat__
+Comanda: **/refresh**
+__Actualizați lista de administratori a chat__
 """
 
     MISC_HELP="""
-Command: **/export**
-__VCPlayer allows you to export your current playlist for future use.__
-__A json file will be sent to you and the same can be used along /import command.__
+Comanda: **/export**
+__VCPlayer vă permite să exportați lista de redare curentă pentru o utilizare viitoare.__
+__Vă fi trimis un fișier json și același lucru poate fi folosit împreună cu comanda /import.__
 
-Command : **/logs**
-__If your player went something gone wrong, you can easily check the logs using /logs__
+Comanda: **/logs**
+__Dacă playerul dvs. a mers prost, puteți verifica cu ușurință jurnalele folosind /logs__
  
-Command : **/env**
-__Setup your config vars with /env command.__
-__Example: To set up a__ `REPLY_MESSAGE` __use__ `/env REPLY_MESSAGE=Hey, Check out @subin_works rather than spamming in my PM`__
-__You can delete a config var by ommiting a value for that, Example:__ `/env LOG_GROUP=` __this will delete the existing LOG_GROUP config.
+Comanda: **/env**
+__Configurați config vars cu comanda /env.__
+__Exemplu: pentru a configura un__ `REPLY_MESSAGE` __use__ `/env REPLY_MESSAGE=Hei, verificați @subin_works în loc să trimiteți spam în PM`__
+__Puteți șterge o config var omitând o valoare pentru aceasta, Exemplu:__ `/env LOG_GROUP=` __acest lucru va șterge configurația existentă LOG_GROUP.
 
-Command: **/config**
-__Same as using /env**
+Comanda: **/config**
+__La fel cu utilizarea /env**
 
-Command: **/update**
-__Updates youe bot with latest changes__
+Comanda: **/update**
+__Actualizează dvs. bot cu cele mai recente modificări__
 
-Tip: __You can easily change the CHAT config by adding the user account and bot account to any other group and any command in new group__
+Sfat: __Puteți schimba cu ușurință configurația CHAT adăugând contul de utilizator și contul bot la orice alt grup și orice comandă din grupul nou__
 
 """
     ENV_HELP="""
-**These are the configurable vars available and you can set each one of them using /env command**
+**Acestea sunt variantele configurabile disponibile și le puteți seta pe fiecare folosind comanda /env**
 
 
-**Mandatory Vars**
+**Vars obligatorii**
 
-1. `API_ID` : __Get From [my.telegram.org](https://my.telegram.org/)__
+1. `API_ID`: __Get From [my.telegram.org](https://my.telegram.org/)__
 
-2. `API_HASH` : __Get from [my.telegram.org](https://my.telegram.org)__
+2. `API_HASH` : __Obțineți de la [my.telegram.org](https://my.telegram.org)__
 
-3. `BOT_TOKEN` : __[@Botfather](https://telegram.dog/BotFather)__
+3. `BOT_TOKEN`: __[@Botfather](https://telegram.dog/BotFather)__
 
-4. `SESSION_STRING` : __Generate From here [GenerateStringName](https://repl.it/@subinps/getStringName)__
+4. `SESSION_STRING` : __Generează de aici [GenerateStringName](https://repl.it/@subinps/getStringName)__
 
-5. `CHAT` : __ID of Channel/Group where the bot plays Music.__
+5. `CHAT`: __ID-ul canalului/grupului unde botul redă muzică.__
 
-6. `STARTUP_STREAM` : __This will be streamed on startups and restarts of bot. 
-You can use either any STREAM_URL or a direct link of any video or a Youtube Live link. 
-You can also use YouTube Playlist.Find a Telegram Link for your playlist from [PlayList Dumb](https://telegram.dog/DumpPlaylist) or get a PlayList from [PlayList Extract](https://telegram.dog/GetAPlaylistbot). 
-The PlayList link should in form `https://t.me/DumpPlaylist/xxx`
-You can also use the files from a channel as startup stream. For that just use the channel id or channel username of channel as STARTUP_STREAM value.
-For more info on channel play , read help from player section.__
+6. `STARTUP_STREAM`: __Acest lucru va fi transmis în stream la pornirile și repornirile botului.
+Puteți folosi fie orice STREAM_URL, fie un link direct către orice videoclip sau un link YouTube Live.
+Puteți utiliza, de asemenea, lista de redare YouTube. Găsiți un link Telegram pentru lista dvs. de redare de la [PlayList Dumb](https://telegram.dog/DumpPlaylist) sau obțineți o listă de redare de la [PlayList Extract](https://telegram.dog/GetAPlaylistbot) .
+Linkul Playlist ar trebui să aibă forma „https://t.me/DumpPlaylist/xxx”.
+De asemenea, puteți utiliza fișierele de pe un canal ca stream de pornire. Pentru aceasta, trebuie doar să utilizați ID-ul canalului sau numele de utilizator al canalului ca valoare STARTUP_STREAM.
+Pentru mai multe informații despre redarea canalului, citiți ajutorul din secțiunea playerului.__
 
-**Recommended Optional Vars**
+**Varii opționale recomandate**
 
-1. `DATABASE_URI`: __MongoDB database Url, get from [mongodb](https://cloud.mongodb.com). This is an optional var, but it is recomonded to use this to experiance the full features.__
+1. `DATABASE_URI`: __MongoDB baza de date URL, obțineți de la [mongodb](https://cloud.mongodb.com). Aceasta este o variantă opțională, dar este recomandat să o utilizați pentru a experimenta toate funcțiile.__
 
-2. `HEROKU_API_KEY`: __Your heroku api key. Get one from [here](https://dashboard.heroku.com/account/applications/authorizations/new)__
+2. `HEROKU_API_KEY`: __Cheia dvs. API Heroku. Obțineți unul de [aici](https://dashboard.heroku.com/account/applications/authorizations/new)__
 
-3. `HEROKU_APP_NAME`: __Your heroku app's name.__
+3. `HEROKU_APP_NAME`: __Numele aplicației dvs. Heroku.__
 
-4. `FILTERS`: __Filters for channel play file search. Read help about cplay in player section.__
+4. `FILTRE`: __Filtre pentru căutarea fișierelor de redare a canalului. Citiți ajutor despre cplay în secțiunea player.__
 
 **Other Optional Vars**
 1. `LOG_GROUP` : __Group to send Playlist, if CHAT is a Group__
