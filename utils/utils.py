@@ -1523,7 +1523,7 @@ async def settings_panel():
     reply_markup=InlineKeyboardMarkup(
         [
             [
-               InlineKeyboardButton(f"Player Mode", callback_data='info_mode'),
+               InlineKeyboardButton(f"▶️ Player Mode", callback_data='info_mode'),
                InlineKeyboardButton(f"{'🔂 Redare Non Stop' if Config.IS_LOOP else '▶️ Play and Leave'}", callback_data='is_loop'),
             ],
             [
