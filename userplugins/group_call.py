@@ -82,8 +82,8 @@ async def reply(client, message):
             await client.delete_messages(message.chat.id, [old["msg"], old["s"]])
         Config.msg[message.chat.id]={"msg":m.updates[1].message.id, "s":message.message_id}
     except BotInlineDisabled:
-        LOGGER.error(f"Error: Inline Mode for @{Config.BOT_USERNAME} is not enabled. Enable from @Botfather to enable PM Permit.")
-        await message.reply(f"{Config.REPLY_MESSAGE}\n\n<b>You can't use this bot in your group, for that you have to make your own bot from the [SOURCE CODE](https://github.com/subinps/VCPlayerBot) below.</b>", disable_web_page_preview=True)
+        LOGGER.error(f"Eroare: Inline Mode pentru @{Config.BOT_USERNAME} nu este activat. Il poti activa din @Botfather pentru activarea PM Permit.")
+        await message.reply(f"{Config.REPLY_MESSAGE}\n\n<b>Nu poți folosi acest bot în grupul tău, pentru asta trebuie să-ți faci propriul bot din [SOURCE CODE](https://t.me/LupiiDinHaita) jos.</b>", disable_web_page_preview=True)
     except Exception as e:
         LOGGER.error(e, exc_info=True)
         pass
@@ -114,9 +114,9 @@ async def service_msg(client, message):
         k=scheduler.get_job(str(Config.CHAT), jobstore=None) #scheduled records
         if k:
             await start_record_stream()
-            LOGGER.info("Resuming recording..")
+            LOGGER.info("Reluarea înregistrării..")
         elif Config.WAS_RECORDING:
-            LOGGER.info("Previous recording was ended unexpectedly, Now resuming recordings.")
+            LOGGER.info("Înregistrarea anterioară s-a încheiat în mod neașteptat. Acum se reiau înregistrările.")
             await start_record_stream()#for unscheduled
         a = await client.send(
                 GetFullChannel(
@@ -129,10 +129,10 @@ async def service_msg(client, message):
                 )
         if a.full_chat.call is not None:
             Config.CURRENT_CALL=a.full_chat.call.id
-        LOGGER.info("Voice chat started.")
+        LOGGER.info("Voice chat activat.")
         await sync_to_db()
     elif message.service == 'voice_chat_scheduled':
-        LOGGER.info("VoiceChat Scheduled")
+        LOGGER.info("VoiceChat Programat")
         Config.IS_ACTIVE=False
         Config.HAS_SCHEDULE=True
         await sync_to_db()
@@ -175,11 +175,11 @@ async def handle_raw_updates(client: Client, update: Update, user: dict, chat: d
         if update.call is None:
             Config.IS_ACTIVE = False
             Config.CURRENT_CALL=None
-            LOGGER.warning("No Active Group Calls Found.")
+            LOGGER.warning("Nu au fost găsite apeluri de grup activ.")
             if Config.IS_RECORDING:
                 Config.WAS_RECORDING=True
                 await stop_recording()
-                LOGGER.warning("Group call was ended and hence stoping recording.")
+                LOGGER.warning("Apelul de grup a fost încheiat și, prin urmare, s-a oprit înregistrarea.")
             Config.HAS_SCHEDULE = False
             await sync_to_db()
             return
@@ -192,7 +192,7 @@ async def handle_raw_updates(client: Client, update: Update, user: dict, chat: d
                 if Config.IS_RECORDING:
                     Config.WAS_RECORDING=True
                     await stop_recording()
-                LOGGER.warning("Group Call Was ended")
+                LOGGER.warning("Apelul de grup a fost încheiat")
                 Config.CALL_STATUS = False
                 await sync_to_db()
                 return
@@ -201,7 +201,7 @@ async def handle_raw_updates(client: Client, update: Update, user: dict, chat: d
             if Config.IS_RECORDING and not call.record_video_active:
                 Config.LISTEN=True
                 await stop_recording()
-                LOGGER.warning("Recording was ended by user, hence stopping the schedules.")
+                LOGGER.warning("Înregistrarea a fost încheiată de utilizator, prin urmare le-am oprit pe cele programate.")
                 return
             if call.schedule_date:
                 Config.HAS_SCHEDULE=True
