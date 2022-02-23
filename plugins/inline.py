@@ -31,8 +31,8 @@ from pyrogram import (
 
 buttons = [
     [
-        InlineKeyboardButton('⚡️Make Own Bot', url='https://github.com/subinps/VCPlayerBot'),
-        InlineKeyboardButton('🧩 Join Here', url='https://t.me/subin_works'),
+        InlineKeyboardButton('⚡️Make Own Bot', url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+        InlineKeyboardButton('🧩 Secret', url='https://t.me/OTRportal'),
     ]
     ]
 def get_cmd(dur):
