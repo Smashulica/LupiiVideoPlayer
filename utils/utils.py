@@ -1535,15 +1535,15 @@ async def settings_panel():
                 InlineKeyboardButton(f"{'🔒 Pornit' if Config.ADMIN_ONLY else '🔓 Oprit'}", callback_data='admin_only'),
             ],
             [
-                InlineKeyboardButton("🪶 Edit Title", callback_data=f"info_title"),
+                InlineKeyboardButton("🪶 Editeaza Titlu", callback_data=f"info_title"),
                 InlineKeyboardButton(f"{'✏️ Pornit' if Config.EDIT_TITLE else '🚫 Oprit'}", callback_data='edit_title'),
             ],
             [
-                InlineKeyboardButton("🔀 Shuffle Mode", callback_data=f"info_shuffle"),
+                InlineKeyboardButton("🔀 Amesteca Playlist", callback_data=f"info_shuffle"),
                 InlineKeyboardButton(f"{'✅ Pornit' if Config.SHUFFLE else '🚫 Oprit'}", callback_data='set_shuffle'),
             ],
             [
-                InlineKeyboardButton("👮 Auto Reply (PM Permit)", callback_data=f"info_reply"),
+                InlineKeyboardButton("👮 Auto Raspuns (PM bot)", callback_data=f"info_reply"),
                 InlineKeyboardButton(f"{'✅ Pornit' if Config.REPLY_PM else '🚫 Oprit'}", callback_data='reply_msg'),
             ],
             [
