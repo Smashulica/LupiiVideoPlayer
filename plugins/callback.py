@@ -338,7 +338,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     ]
                 ]
                 await query.message.edit("Sunteți sigur că doriți să anulați toate streamurile programate?", reply_markup=InlineKeyboardMarkup(buttons))
-            elif data == "schclose":..
+            elif data == "schclose":
                 await query.answer("Meniu Inchis")
                 await query.message.delete()
                 await query.message.reply_to_message.delete()
