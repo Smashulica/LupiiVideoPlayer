@@ -266,7 +266,7 @@ Ora de programare este implicit în IST și puteți schimba fusul orar folosind 
 Comanda: **/slist**
 __Vizualizați streamurile dvs. programate curente.__
 
-Comanda: **/anulează**
+Comanda: **/cancel**
 __Anulați un program după id-ul său de program, puteți obține ID-ul programului folosind comanda /slist__
 
 Comanda: **/cancelall**
@@ -311,7 +311,7 @@ Comanda: **/volum**
 __Treceți volumul între 1-200.__
 
 5. Părăsiți VC.
-Comanda: **/pleaca**
+Comanda: **/leave**
 
 6. Amestecați lista de redare.
 Comanda: **/shuffle**
