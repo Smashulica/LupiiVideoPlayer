@@ -47,13 +47,13 @@ class Config:
     STREAM_URL=os.environ.get("STARTUP_STREAM", "https://www.youtube.com/watch?v=zcrUCvBD16k")
    
     #Database
-    DATABASE_URI=os.environ.get("DATABASE_URI", None)
-    DATABASE_NAME=os.environ.get("DATABASE_NAME", "VCPlayerBot")
+    DATABASE_URI=os.environ.get("DATABASE_URI", "")
+    DATABASE_NAME=os.environ.get("DATABASE_NAME", "Cluster0")
 
 
     #heroku
-    API_KEY=os.environ.get("HEROKU_API_KEY", None)
-    APP_NAME=os.environ.get("HEROKU_APP_NAME", None)
+    API_KEY=os.environ.get("HEROKU_API_KEY", "")
+    APP_NAME=os.environ.get("HEROKU_APP_NAME", "")
 
 
     #Optional Configuration
